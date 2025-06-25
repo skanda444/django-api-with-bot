@@ -1,0 +1,64 @@
+/* Custom styles for Django DRF Project */
+
+.api-endpoint {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.code-block {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+}
+
+.telegram-gradient {
+    background: linear-gradient(135deg, #0088cc 0%, #229ed9 100%);
+}
+
+.login-form {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-xl {
+        font-size: 1.125rem;
+    }
+}
+
+/* Animation for loading states */
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}

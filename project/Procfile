@@ -1,0 +1,2 @@
+web: gunicorn django_project.wsgi:application --port $PORT
+bot: python manage.py run_telegram_bot

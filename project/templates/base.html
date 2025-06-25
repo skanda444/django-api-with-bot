@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django DRF Project{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800">
+                        <i class="fas fa-rocket mr-2"></i>Django DRF
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    {% if user.is_authenticated %}
+                        <span class="text-gray-600">Welcome, {{ user.username }}!</span>
+                        <a href="/admin/" class="text-blue-600 hover:text-blue-800">Admin</a>
+                        <a href="/auth/logout/" class="text-red-600 hover:text-red-800">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="text-blue-600 hover:text-blue-800">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-6 px-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mb-4 p-4 rounded-md {% if message.tags == 'error' %}bg-red-100 text-red-700{% elif message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-blue-100 text-blue-700{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-white border-t mt-12">
+        <div class="max-w-7xl mx-auto py-4 px-4 text-center text-gray-600">
+            <p>&copy; 2024 Django DRF Project. Built with Django, DRF, and Telegram Bot integration.</p>
+        </div>
+    </footer>
+</body>
+</html>
